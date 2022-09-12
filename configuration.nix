@@ -118,10 +118,11 @@
     mtr
     nmap
     wget
+    rclone
 
     # CSC258
     logisim-evolution
-    # texlive
+    texlive.combined.scheme-medium
   ];
 
   # IME
