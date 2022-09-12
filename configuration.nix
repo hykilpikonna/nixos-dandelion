@@ -74,8 +74,12 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-    #  thunderbird
     ];
+    shell = pkgs.zsh;
+  };
+
+  users.users.root = {
+    shell = pkgs.zsh;
   };
 
   # Allow unfree packages
@@ -84,13 +88,26 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     vscode
     zsh
     git
     python3
+    tdesktop
+    google-chrome
+    hyper
+    # tabby
+    ibus
   ];
+
+  # IME
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ 
+      rime
+      typing-booster
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
