@@ -121,6 +121,7 @@
 
     # CSC258
     logisim-evolution
+    # texlive
   ];
 
   # IME
@@ -130,6 +131,32 @@
       rime
       typing-booster
     ];
+  };
+
+  # Fonts
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-extra
+      noto-fonts-emoji
+      sarasa-gothic
+      wqy_zenhei
+      jetbrains-mono
+    ];
+    fontconfig = {
+      enable = true;
+      hinting = {
+        enable = true;
+      };
+      defaultFonts = {
+        serif = [ "Noto Serif CJK SC" ];
+        sansSerif = [ "Sarasa UI SC" "Noto Sans CJK SC" ];
+        monospace = [ "Jetbrains Mono" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -146,8 +173,8 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 443 3000 8000 8080 ];
+  networking.firewall.allowedUDPPorts = [ 22 443 3000 8000 8080 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -158,5 +185,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }
