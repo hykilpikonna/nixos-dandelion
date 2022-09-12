@@ -88,10 +88,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
-    vscode
     zsh
-    git
     tdesktop
     google-chrome
     hyper
@@ -101,6 +98,10 @@
     # IDE
     jetbrains.idea-ultimate
     vscode
+
+    # Version contol
+    git
+    github-desktop
     
     # Python
     python3
@@ -112,6 +113,14 @@
 
     # Java
     adoptopenjdk-openj9-bin-11
+
+    # Networking
+    mtr
+    nmap
+    wget
+
+    # CSC258
+    logisim-evolution
   ];
 
   # IME
