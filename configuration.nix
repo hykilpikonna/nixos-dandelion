@@ -171,11 +171,10 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
@@ -185,8 +184,6 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 443 3000 8000 8080 ];
   networking.firewall.allowedUDPPorts = [ 22 443 3000 8000 8080 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
