@@ -92,12 +92,26 @@
     vscode
     zsh
     git
-    python3
     tdesktop
     google-chrome
     hyper
     # tabby
     ibus
+
+    # IDE
+    jetbrains.idea-ultimate
+    vscode
+    
+    # Python
+    python3
+    conda
+
+    # JS
+    nodejs
+    yarn
+
+    # Java
+    adoptopenjdk-openj9-bin-11
   ];
 
   # IME
