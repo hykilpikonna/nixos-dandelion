@@ -4,13 +4,10 @@
 
 { config, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
 {
   imports = [
     ./hardware-configuration.nix
-    # (import "${home-manager}/nixos")
+    ./home-manager.nix
   ];
 
   # Bootloader.
@@ -84,14 +81,6 @@ in
   users.users.root = {
     shell = pkgs.zsh;
   };
-
-  # home-manager.users.azalea = {
-  #   programs.git = {
-  #     enable = true;
-  #     userName  = "Azalea";
-  #     userEmail = "me@hydev.org";
-  #   };
-  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
