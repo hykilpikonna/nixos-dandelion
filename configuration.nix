@@ -4,11 +4,14 @@
 
 { config, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    # (import "${home-manager}/nixos")
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -82,6 +85,14 @@
     shell = pkgs.zsh;
   };
 
+  # home-manager.users.azalea = {
+  #   programs.git = {
+  #     enable = true;
+  #     userName  = "Azalea";
+  #     userEmail = "me@hydev.org";
+  #   };
+  # };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -106,6 +117,15 @@
     # Python
     python3
     conda
+
+    # Python packages
+    (with pkgs;
+    let
+      pypkg = python-packages: with python-packages; [
+        requests
+      ]; 
+      py3pkgs = python3.withPackages pypkg;
+    in py3pkgs)
 
     # JS
     nodejs
