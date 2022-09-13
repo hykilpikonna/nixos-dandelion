@@ -6,7 +6,7 @@ set -e
 export cdir="$HOME/nixos"
 
 # Clone this repo
-git clone git@github.com:hykilpikonna/nixos-dandelion.git "$cdir"
+git clone https://github.com/hykilpikonna/nixos-dandelion "$cdir"
 
 # Backup old nixos config
 sudo mv /etc/nixos /etc/nixos.bak
@@ -19,7 +19,7 @@ sudo chown -R $(id -u):$(id -g) "$cdir"
 sudo ln -s "$cdir" /etc/nixos
 
 # Switch to unstable
-nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 
 # Rebuild
-nixos-rebuild switch --upgrade
+sudo nixos-rebuild switch --upgrade
