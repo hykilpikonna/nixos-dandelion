@@ -3,20 +3,20 @@
 # Stop on error
 set -e
 
-# Check root user
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
-fi
+export cdir="$HOME/nixos"
 
-# Clone this repo to /nixcfg
-git clone git@github.com:hykilpikonna/nixos-dandelion.git /nixc
+# Clone this repo
+git clone git@github.com:hykilpikonna/nixos-dandelion.git "$cdir"
 
 # Backup old nixos config
-mv /etc/nixos /etc/nixos.bak
+sudo mv /etc/nixos /etc/nixos.bak
+
+# Copy hardware config
+sudo cp /etc/nixos.bak/hardware-configuration.nix "$cdir"
+sudo chown -R $(id -u):$(id -g) "$cdir"
 
 # Link this nixos config
-ln -s /nixc /etc/nixos
+sudo ln -s "$cdir" /etc/nixos
 
 # Switch to unstable
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos
