@@ -94,6 +94,7 @@
     hyper
     # tabby
     ibus
+    # file
 
     # IDE
     jetbrains.idea-ultimate
@@ -122,6 +123,7 @@
 
     # Java
     adoptopenjdk-openj9-bin-11
+    # adoptopenjdk-openj9-bin-17
 
     # Networking
     mtr

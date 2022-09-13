@@ -17,4 +17,13 @@ in
       userEmail = "me@hydev.org";
     };
   };
+
+  home-manager.users.root = {
+    # Git
+    programs.git = {
+      enable = true;
+      userName = "Azalea";
+      userEmail = "me@hydev.org";
+    };
+  };
 }
