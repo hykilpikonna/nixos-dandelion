@@ -94,11 +94,13 @@
     hyper
     # tabby
     ibus
-    # file
+    file
+    hyfetch
 
     # IDE
     jetbrains.idea-ultimate
     vscode
+    micro
 
     # Version contol
     git
@@ -122,8 +124,8 @@
     yarn
 
     # Java
-    adoptopenjdk-openj9-bin-11
-    # adoptopenjdk-openj9-bin-17
+    jdk11
+    jdk17
 
     # Networking
     mtr
